@@ -38,8 +38,9 @@ module.exports = async (req, res) => {
   }
 
   if (req.method === 'GET') {
+    // Đã thêm content và image vào đây
     const { rows } = await sql`
-      SELECT id, title, source_url, tags, created_at
+      SELECT id, title, content, image, source_url, tags, created_at
       FROM posts ORDER BY created_at DESC LIMIT 50;
     `;
     return res.status(200).json(rows);
